@@ -6,18 +6,17 @@ import java.nio.charset.CharsetEncoder;
 public class CodeConv {
 
 	public static void main(String[] args) {
-		
 		for(char c = '\u0000'; c < '\uffff'; c++) {
-			System.out.println(c);
-			
-			
-			
+			byte[] bb = Encode(c);
+
 		}
-		
 		
 	}
 	
-	public static void Encode(char c) {
+	/*
+	 * 
+	 */
+	public static byte[] Encode(char c) {
 		CharBuffer cBuf = CharBuffer.wrap(new char[] {c});
 		
 		CharsetEncoder ms932Encoder = Charset.forName("MS932").newEncoder();
@@ -30,6 +29,7 @@ public class CodeConv {
 		
 		ms932Encoder.flush(bBuf);
 		
+		return bBuf.array();
 	}
 
 }
